@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevBook - Mes Livres Techniques</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>DevBook</h1>
+        <nav>
+            
+        </nav>
+    </header>
+
+    <main>
+        <section id="controls">
+            <h2>Ma Collection</h2>
+            <button id="add-book-btn">Ajouter un Livre</button>
+            <div class="filters">
+                <input type="search" id="search-input" placeholder="Rechercher par titre, auteur, ISBN...">
+                <select id="category-filter">
+                    <option value="">Toutes les catégories</option>
+                    
+                </select>
+                <select id="status-filter">
+                    <option value="">Tous les statuts</option>
+                    <option value="à lire">À lire</option>
+                    <option value="en cours">En cours</option>
+                    <option value="lu">Lu</option>
+                </select>
+                <select id="sort-filter">
+                    <option value="title_asc">Titre (A-Z)</option>
+                    <option value="title_desc">Titre (Z-A)</option>
+                    <option value="author_asc">Auteur (A-Z)</option>
+                    <option value="author_desc">Auteur (Z-A)</option>
+                    
+                </select>
+                 <button id="apply-filters-btn">Filtrer/Trier</button>
+            </div>
+        </section>
+
+        <section id="book-list-section">
+             <div id="loading-indicator" style="display: none;">Chargement des livres...</div>
+             <div id="error-message" class="error" style="display: none;"></div>
+             <table id="book-table">
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Auteur</th>
+                        <th>Catégorie</th>
+                        <th>Statut</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="book-list">
+                    
+                </tbody>
+            </table>
+            <div id="pagination-controls">
+                 <button id="prev-page" disabled>Précédent</button>
+                 <span id="page-info">Page 1 sur 1</span>
+                 <button id="next-page" disabled>Suivant</button>
+            </div>
+        </section>
+
+        
+         <div id="book-modal" class="modal" style="display: none;">
+             <div class="modal-content">
+                 <span class="close-btn">×</span>
+                 <h3 id="modal-title">Ajouter un Livre</h3>
+                 <form id="book-form">
+                     <input type="hidden" id="book-id"> 
+                     <div>
+                         <label for="title">Titre:</label>
+                         <input type="text" id="title" name="title" required>
+                     </div>
+                     <div>
+                         <label for="author">Auteur:</label>
+                         <input type="text" id="author" name="author">
+                     </div>
+                      <div>
+                         <label for="isbn">ISBN:</label>
+                         <input type="text" id="isbn" name="isbn">
+                     </div>
+                     <div>
+                         <label for="description">Description:</label>
+                         <textarea id="description" name="description"></textarea>
+                     </div>
+                     <div>
+                         <label for="category">Catégorie:</label>
+                         <select id="category" name="category_id">
+                             <option value="">-- Sélectionner --</option>
+                             
+                         </select>
+                     </div>
+                     <div>
+                         <label for="read_status">Statut:</label>
+                         <select id="read_status" name="read_status" required>
+                             <option value="à lire">À lire</option>
+                             <option value="en cours">En cours</option>
+                             <option value="lu">Lu</option>
+                         </select>
+                     </div>
+                     <div id="form-error" class="error" style="display: none;"></div>
+                     <button type="submit" id="save-book-btn">Enregistrer</button>
+                 </form>
+             </div>
+         </div>
+
+    </main>
+
+    <footer>
+        <p>© $(date +%Y) DevBook</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
